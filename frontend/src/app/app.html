@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="card">
+    <h1 class="title">Users</h1>
+
+    <button (click)="toggleUserList()" class="toggle-button">
+      {{ showUsers ? 'Hide Users' : 'Show Users' }}
+    </button>
+    @if(showUsers) {
+    <ul class="user-list">
+      @for (user of users; track user.id) {
+      <li class="user-card">
+        <p>{{ user.name }} - {{ user.email }}</p>
+      </li>
+      }
+    </ul>
+    }
+
+    <form (submit)="addUser()" class="add-user-form">
+      <input [(ngModel)]="newUser.name" name="name" placeholder="Name" required class="form-input" />
+      <input [(ngModel)]="newUser.email" name="email" placeholder="Email" required class="form-input" />
+      <button type="submit" class="submit-button">Add User</button>
+    </form>
+  </div>
+</div>
